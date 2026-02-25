@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      plants: {
+        Row: {
+          ai_advisory: string | null
+          confidence_score: number | null
+          created_at: string | null
+          detection_date: string | null
+          disease_detected: string | null
+          id: string
+          name: string
+          original_image_url: string | null
+          recovery_percentage: number | null
+          status: string | null
+          treatment_plan: Json | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          ai_advisory?: string | null
+          confidence_score?: number | null
+          created_at?: string | null
+          detection_date?: string | null
+          disease_detected?: string | null
+          id?: string
+          name: string
+          original_image_url?: string | null
+          recovery_percentage?: number | null
+          status?: string | null
+          treatment_plan?: Json | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          ai_advisory?: string | null
+          confidence_score?: number | null
+          created_at?: string | null
+          detection_date?: string | null
+          disease_detected?: string | null
+          id?: string
+          name?: string
+          original_image_url?: string | null
+          recovery_percentage?: number | null
+          status?: string | null
+          treatment_plan?: Json | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string
+          language_preference: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          language_preference?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          language_preference?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      recovery_logs: {
+        Row: {
+          ai_analysis: string | null
+          created_at: string | null
+          day_number: number
+          id: string
+          image_url: string | null
+          notes: string | null
+          plant_id: string
+          recovery_percentage: number | null
+          user_id: string
+        }
+        Insert: {
+          ai_analysis?: string | null
+          created_at?: string | null
+          day_number: number
+          id?: string
+          image_url?: string | null
+          notes?: string | null
+          plant_id: string
+          recovery_percentage?: number | null
+          user_id: string
+        }
+        Update: {
+          ai_analysis?: string | null
+          created_at?: string | null
+          day_number?: number
+          id?: string
+          image_url?: string | null
+          notes?: string | null
+          plant_id?: string
+          recovery_percentage?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recovery_logs_plant_id_fkey"
+            columns: ["plant_id"]
+            isOneToOne: false
+            referencedRelation: "plants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
